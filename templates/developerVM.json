@@ -58,7 +58,7 @@
         },
         "fileUris": {
            "type": "String"
-       },
+       }
     },
     "variables": {
         "vnetId": "[resourceId('rbsTechstock','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
