@@ -3,58 +3,76 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "northeurope"
         },
         "virtualMachineName": {
-            "type": "string"
+            "type": "string",
+ "defaultValue":            "defaultValue": "xxxxDevVM"
         },
         "virtualMachineSize": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Standard_A2"
         },
         "adminUsername": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "davsamu"
         },
+
         "storageAccountName": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"rbstechstockdisks"
         },
         "virtualNetworkName": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"rbsTechstockvnet"
         },
         "networkInterfaceName": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"xxxxdevmachine867"
         },
         "networkSecurityGroupName": {
-            "type": "string"
+            "type": "string", 
+            "defaultValue":"xxxxDevMachine-NSG"
         },
         "adminPassword": {
             "type": "securestring"
         },
         "storageAccountType": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"Standard_LRS"
         },
         "diagnosticsStorageAccountName": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"rbstechstockdiagnostics"
         },
         "diagnosticsStorageAccountId": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"Microsoft.Storage/storageAccounts/rbstechstockdiagnostics"
         },
         "diagnosticsStorageAccountType": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"Standard_LRS"
         },
         "addressPrefix": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"10.7.1.0/24"
         },
         "subnetName": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"default"
         },
         "subnetPrefix": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"10.7.1.0/24"
         },
         "publicIpAddressName": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"xxxxDevMachine-PublicIP"
         },
         "publicIpAddressType": {
-            "type": "string"
+            "type": "string",
+             "defaultValue":"Dynamic"
         },
         "fileUris": {
            "type": "String"
