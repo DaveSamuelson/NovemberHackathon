@@ -1,0 +1,63 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "northeurope"
+        },
+        "virtualMachineName": {
+            "value": "xxxxDevMachine"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_A2"
+        },
+        "adminUsername": {
+            "value": "davsamu"
+        },
+        "storageAccountName": {
+            "value": "rbstechstockdisks"
+        },
+        "virtualNetworkName": {
+            "value": "rbsTechstockvnet"
+        },
+        "networkInterfaceName": {
+            "value": "xxxxdevmachine867"
+        },
+        "networkSecurityGroupName": {
+            "value": "xxxxDevMachine-NSG"
+        },
+        "adminPassword": {
+            "value": null
+        },
+        "storageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "rbstechstockdiagnostics"
+        },
+        "diagnosticsStorageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "diagnosticsStorageAccountId": {
+            "value": "Microsoft.Storage/storageAccounts/rbstechstockdiagnostics"
+        },
+        "addressPrefix": {
+            "value": "10.7.1.0/24"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "subnetPrefix": {
+            "value": "10.7.1.0/24"
+        },
+        "publicIpAddressName": {
+            "value": "xxxxDevMachine-PublicIP"
+        },
+        "publicIpAddressType": {
+            "value": "Dynamic"
+        },
+        "fileUris": {
+           "type": "String"
+       }
+    }
+}
