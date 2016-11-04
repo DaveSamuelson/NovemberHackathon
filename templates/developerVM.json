@@ -8,7 +8,7 @@
         },
         "virtualMachineName": {
             "type": "string",
- "defaultValue":            "defaultValue": "xxxxDevVM"
+ "defaultValue":    "xxxxDevVM"
         },
         "virtualMachineSize": {
             "type": "string",
