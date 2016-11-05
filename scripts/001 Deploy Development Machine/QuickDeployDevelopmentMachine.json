@@ -238,21 +238,22 @@
             "name": "[concat(variables('virtualMachineName'),'/CustomScriptExtension')]",
             "apiVersion": "2015-06-15",
             "location": "[parameters('location')]",
+             "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/',variables('virtualMachineName'),'/extensions/', variables('diagnosticsExtensionName'))]"
+            ],
             "properties": {
                 "publisher": "Microsoft.Compute",
                 "type": "CustomScriptExtension",
                 "typeHandlerVersion": "1.7",
                 "autoUpgradeMinorVersion": true,
                 "settings": {
-                    "fileUris": "[split(variables('fileUris'), ' ')]"
+                    "fileUris": ["http://davesextensions.blob.core.windows.net/vmextensions/GetContosoSample.ps1"]
                 },
                 "protectedSettings": {
                     "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', variables('arguments'))]"
                 }
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/',variables('virtualMachineName'),'/extensions/', variables('diagnosticsExtensionName'))]"
-            ]
+            }
+           
         }
      ],
     "outputs": {
