@@ -394,7 +394,7 @@
         },
         {
             "type": "microsoft.insights/components",
-            "name": "variables('adminAppName')",
+            "name": "[variables('adminAppName')]",
             "apiVersion": "2014-04-01",
             "location": "[parameters('location')]",
             "tags": {
