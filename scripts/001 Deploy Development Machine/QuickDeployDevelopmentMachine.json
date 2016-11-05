@@ -59,7 +59,7 @@
         "databaseName" : "ContosoSportsDB",
         "additionalStorageAccName": "[concat(parameters('Team Identifier'), 'rbsstorage')]",
         "paymentsAPIAppName" : "[concat(variables('ecommerceAppName'), 'PaymentsAPI')]",   
-
+        "offersAPIAppName" : "[concat(variables('ecommerceAppName'), 'OffersAPI')]"   
     },
     "resources": [
         {
@@ -438,6 +438,37 @@
             },
             "dependsOn": [
                 "[concat('Microsoft.Web/sites/', variables('paymentsAPIAppName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "kind": "api",
+            "name": "[variables('offersAPIAppName')]",
+            "apiVersion": "2016-03-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "[concat('hidden-related:', '/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name,  '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty"
+            },
+            "properties": {
+                "name": "[variables('offersAPIAppName')]",
+                "serverFarmId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
+                "hostingEnvironment": "[variables('hostingEnvironment')]"
+            }
+        },
+        {
+            "type": "microsoft.insights/components",
+            "name": "[variables('offersAPIAppName')]",
+            "apiVersion": "2014-04-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('offersAPIAppName'))]": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[variables('offersAPIAppName')]",
+                "Request_Source": "IbizaWebAppExtensionCreate"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/', variables('offersAPIAppName'))]"
             ]
         }
         
