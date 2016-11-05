@@ -54,7 +54,7 @@
         "UriFileNamePieces": "[split(variables('fileUris'), '/')]",
         "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
         "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
-        "firstFileName": "[variables('firstFileNameBreakString')[0]]"
+        "firstFileName": "[variables('firstFileNameBreakString')[0]]" 
              
     },
     "resources": [
