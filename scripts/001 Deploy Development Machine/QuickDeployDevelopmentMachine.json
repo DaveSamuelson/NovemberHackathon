@@ -16,7 +16,7 @@
             "defaultValue": "rbsTeam",
             "maxLength": 8,
              "metadata": {
-                    "description": "Select an identifier for your team to be used when naminbg Azure Resources"
+                    "description": "Input an identifier (lower case only) for your team to be used when naminbg Azure Resources"
                 }    
         }  
     },
