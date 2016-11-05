@@ -31,13 +31,13 @@
         "virtualMachineSize": "Standard_A2",
         "adminUsername": "demouser",
         "adminPassword": "demo@pass1", 
-        "storageAccountName": "[concat(parameters('Team Identifier'), 'RBSDisks')]",
+        "storageAccountName": "[concat(parameters('Team Identifier'), 'rbsdisks')]",
         "virtualNetworkName": "[concat(parameters('Team Identifier'), 'RBSVNet')]",
-        "vnetId": "[resourceId('rbsTechStockManualSetUp','Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
+        "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
         "networkInterfaceName": "[concat(variables('virtualMachineName'),'-NIC')]",
         "networkSecurityGroupName": "[concat(variables('virtualMachineName'),'-NSG')]",
         "storageAccountType": "Standard_LRS",
-        "diagnosticsStorageAccountName": "[concat(parameters('Team Identifier'), 'RBSDiagnostics')]",
+        "diagnosticsStorageAccountName": "[concat(parameters('Team Identifier'), 'rbsdiagnostics')]",
         "diagnosticsStorageAccountId": "[concat('Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
         "diagnosticsStorageAccountType": "[variables('storageAccountType')]",
         "addressPrefix": "10.7.1.0/24",
@@ -82,7 +82,7 @@
                     "osDisk": {
                         "name": "[variables('virtualMachineName')]",
                         "vhd": {
-                            "uri": "[concat(concat(reference(resourceId('rbsTechStockManualSetUp', 'Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), variables('virtualMachineName'), '2016105134216.vhd')]"
+                            "uri": "[concat(concat(reference(resourceId(resourceGroup().name, 'Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2015-06-15').primaryEndpoints['blob'], 'vhds/'), variables('virtualMachineName'), '2016105134216.vhd')]"
                         },
                         "createOption": "fromImage"
                     },
@@ -98,7 +98,7 @@
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": true,
-                        "storageUri": "[reference(resourceId('rbsTechStockManualSetUp', 'Microsoft.Storage/storageAccounts', variables('diagnosticsStorageAccountName')), '2015-06-15').primaryEndpoints['blob']]"
+                        "storageUri": "[reference(resourceId(resourceGroup().name, 'Microsoft.Storage/storageAccounts', variables('diagnosticsStorageAccountName')), '2015-06-15').primaryEndpoints['blob']]"
                     }
                 }
             },
@@ -186,13 +186,13 @@
                             },
                             "privateIPAllocationMethod": "Dynamic",
                             "publicIpAddress": {
-                                "id": "[resourceId('rbsTechStockManualSetUp','Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
+                                "id": "[resourceId(resourceGroup().name,'Microsoft.Network/publicIpAddresses', variables('publicIpAddressName'))]"
                             }
                         }
                     }
                 ],
                 "networkSecurityGroup": {
-                    "id": "[resourceId('rbsTechStockManualSetUp', 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
+                    "id": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]"
                 }
             },
             "dependsOn": [
