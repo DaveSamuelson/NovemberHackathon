@@ -57,7 +57,8 @@
         "hostingPlanName" : "[concat(parameters('Team Identifier'), 'ContosoSportsAppPlan')]",
         "hostingEnvironment" :"",
         "databaseName" : "ContosoSportsDB",
-        "additionalStorageAccName": "[concat(parameters('Team Identifier'), 'rbsstorage')]"    
+        "additionalStorageAccName": "[concat(parameters('Team Identifier'), 'rbsstorage')]",
+        "paymentsAPIAppName" : "[concat(variables('ecommerceAppName'), 'PaymentsAPI')]",   
 
     },
     "resources": [
@@ -406,6 +407,37 @@
             },
             "dependsOn": [
                 "[concat('Microsoft.Web/sites/', variables('adminAppName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "kind": "api",
+            "name": "[variables('paymentsAPIAppName')]",
+            "apiVersion": "2016-03-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "[concat('hidden-related:', '/subscriptions/',  subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty"
+            },
+            "properties": {
+                "name": "[variables('paymentsAPIAppName')]",
+                "serverFarmId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
+                "hostingEnvironment": "[variables('hostingEnvironment')]"
+            }
+        },
+        {
+            "type": "microsoft.insights/components",
+            "name": "[variables('paymentsAPIAppName')]",
+            "apiVersion": "2014-04-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('paymentsAPIAppName'))]": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[variables('paymentsAPIAppName')]",
+                "Request_Source": "IbizaWebAppExtensionCreate"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/', variables('paymentsAPIAppName'))]"
             ]
         }
         
