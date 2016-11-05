@@ -3,7 +3,9 @@ Scripts to help set-up November Hackathon
 
 
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdavesamuelson%2FNovemberHackathon%2Fmaster%2Ftemplates%2FdeveloperVM.json" target="_blank">
+
+<h2>This ste deploys a Visual Studio 2015 Community Edition VM into Azure, copies down the source code from BLOB storage and expands the zip file </h2>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdavesamuelson%2FNovemberHackathon%2Fmaster%2Fscripts%2F001%20Deploy%20Development%20Machine%2FQuickDeployDevelopmentMachine.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
