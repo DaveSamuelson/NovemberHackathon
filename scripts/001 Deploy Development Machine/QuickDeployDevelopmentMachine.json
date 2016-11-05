@@ -46,7 +46,7 @@
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
         "publicIpAddressName": "[concat(variables('virtualMachineName'),'-PIP')]",
         "publicIpAddressType": "Static",
-        "fileUris": "https://davesextensions.blob.core.windows.net/vmextensions/GetContosoSample.ps1",
+        "fileUris": "http://davesextensions.blob.core.windows.net/vmextensions/GetContosoSample.ps1",
         "arguments": "",
         "UriFileNamePieces": "[split(variables('fileUris'), '/')]",
         "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
