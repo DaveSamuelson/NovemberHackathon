@@ -9,7 +9,7 @@ Scripts to help set-up November Hackathon
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-<a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/davesamuelson/NovemberHackathon/master/Microsoft.Sitecore/Microsoft.Sitecore.ResourceGroupDeployments/Templates/SitecoreIaaS.json" target="_blank">
+<a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/davesamuelson/NovemberHackathon/master/scripts/Deploy%20Development%20Machione%20QuickDeployDevelopmentMachine.json" target="_blank">
   <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
