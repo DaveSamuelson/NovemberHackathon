@@ -284,7 +284,7 @@
                     "connectionStrings": [
                         {
                             "name": "defaultConnection",
-                              "ConnectionString": "[concat('Data Source=tcp:' , reference('Microsoft.SQL/servers/rbscontososports').fullyQualifiedDomainName , ',1433;Initial Catalog=ContosoSportsDB;User Id=demouser@',reference('Microsoft.SQL/servers/rbscontososports').fullyQualifiedDomainName,';Password=',parameters('administratorLoginPassword'),';')]",
+                              "ConnectionString": "[concat('Data Source=tcp:' , reference('Microsoft.SQL/servers/', variables('ecommerceAppName'),').fullyQualifiedDomainName , ',1433;Initial Catalog=ContosoSportsDB;User Id=demouser@',reference('Microsoft.SQL/servers/', variables('ecommerceAppName'),').fullyQualifiedDomainName,';Password=',variables('adminPassword'),';')]",
                            
                             "type": "SQLAzure"
                         }
