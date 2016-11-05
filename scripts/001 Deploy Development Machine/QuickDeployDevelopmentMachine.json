@@ -53,9 +53,11 @@
         "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
         "firstFileName": "[variables('firstFileNameBreakString')[0]]",
         "ecommerceAppName" : "[concat(parameters('Team Identifier'), 'contososports')]", 
+        "adminAppName" : "[concat(variables('ecommerceAppName'), 'Admin')]",
         "hostingPlanName" : "[concat(parameters('Team Identifier'), 'ContosoSportsAppPlan')]",
         "hostingEnvironment" :"",
-        "databaseName" : "ContosoSportsDB"     
+        "databaseName" : "ContosoSportsDB",
+        "additionalStorageAccName": "[concat(parameters('Team Identifier'), 'rbsstorage')]"    
 
     },
     "resources": [
@@ -354,6 +356,56 @@
                         "[concat('Microsoft.Sql/servers/', variables('ecommerceAppName'))]"
                     ]
                 }
+            ]
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "[variables('storageAccountType')]"
+            },
+            "kind": "Storage",
+            "name": "[variables('additionalStorageAccName')]",
+            "apiVersion": "2016-01-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "encryption": {
+                    "services": {
+                        "blob": {
+                            "enabled": "false"
+                        }
+                    },
+                    "keySource": "Microsoft.Storage"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "name": "[variables('adminAppName')]",
+            "apiVersion": "2016-03-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "[concat('hidden-related:', '/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty"
+            },
+            "properties": {
+                "name": "[parameters('name')]",
+                "serverFarmId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
+                "hostingEnvironment": "[variables('hostingEnvironment')]"
+            }
+        },
+        {
+            "type": "microsoft.insights/components",
+            "name": "variables('adminAppName')",
+            "apiVersion": "2014-04-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('adminAppName'))]": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[variables('adminAppName')]",
+                "Request_Source": "IbizaWebAppExtensionCreate"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/', variables('adminAppName')]"
             ]
         }
         
