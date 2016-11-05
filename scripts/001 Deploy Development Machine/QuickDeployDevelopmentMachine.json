@@ -46,7 +46,7 @@
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
         "publicIpAddressName": "[concat(variables('virtualMachineName'),'-PIP')]",
         "publicIpAddressType": "Static",
-        "fileUris": "[http://davesextensions.blob.core.windows.net/vmextensions/GetContosoSample.ps1]",
+        "fileUris": "http://davesextensions.blob.core.windows.net/vmextensions/GetContosoSample.ps1",
         "arguments": "",
         "UriFileNamePieces": "[split(variables('fileUris'), '/')]",
         "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
@@ -249,9 +249,7 @@
                 "settings": {
                     "fileUris": "[split(variables('fileUris'), ' ')]"
                 },
-                "protectedSettings": {
-                    "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', variables('arguments'))]"
-                }
+                "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', variables('arguments'))]"
             }
            
         }
