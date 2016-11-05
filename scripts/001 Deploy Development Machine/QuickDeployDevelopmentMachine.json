@@ -132,29 +132,6 @@
                 "[concat('Microsoft.Compute/virtualMachines/', variables('virtualMachineName'))]"
             ]
         },
-        
-        
-        {
-            "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(variables('virtualMachineName'),'/CustomScriptExtension')]",
-            "apiVersion": "2015-06-15",
-            "location": "[parameters('location')]",
-            "properties": {
-                "publisher": "Microsoft.Compute",
-                "type": "CustomScriptExtension",
-                "typeHandlerVersion": "1.7",
-                "autoUpgradeMinorVersion": true,
-                "settings": {
-                    "fileUris": "[split(variables('fileUris'), ' ')]"
-                },
-                "protectedSettings": {
-                    "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', variables('arguments'))]"
-                }
-            },
-            "dependsOn": [
-                "[concat(variables('virtualMachineName'),'/', variables('diagnosticsExtensionName'))]"
-            ]
-        },
         {
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageAccountName')]",
@@ -255,8 +232,29 @@
                     }
                 ]
             }
-        }
-    ],
+        },
+      {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(variables('virtualMachineName'),'/CustomScriptExtension')]",
+            "apiVersion": "2015-06-15",
+            "location": "[parameters('location')]",
+            "properties": {
+                "publisher": "Microsoft.Compute",
+                "type": "CustomScriptExtension",
+                "typeHandlerVersion": "1.7",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "fileUris": "[split(variables('fileUris'), ' ')]"
+                },
+                "protectedSettings": {
+                    "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', variables('arguments'))]"
+                }
+            },
+            "dependsOn": [
+                "[concat(variables('virtualMachineName'),'/', variables('diagnosticsExtensionName'))]"
+            ]
+        },
+     ],
     "outputs": {
         "adminUsername": {
             "type": "String",
