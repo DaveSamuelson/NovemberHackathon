@@ -405,7 +405,7 @@
                 "Request_Source": "IbizaWebAppExtensionCreate"
             },
             "dependsOn": [
-                "[concat('Microsoft.Web/sites/', variables('adminAppName')]"
+                "[concat('Microsoft.Web/sites/', variables('adminAppName'))]"
             ]
         }
         
