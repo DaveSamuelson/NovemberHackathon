@@ -260,6 +260,7 @@
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2016-09-01",
             "location": "[parameters('location')]",
+            
             "properties": {
                 "securityRules": [
                     {
@@ -284,6 +285,7 @@
                     "name": "[concat(parameters('virtualMachineName'),'/CustomScriptExtension')]",
                     "apiVersion": "2015-06-15",
                     "location": "[parameters('location')]",
+                     "dependsOn": ["[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"],
                     "properties": {
                         "publisher": "Microsoft.Compute",
                         "type": "CustomScriptExtension",
