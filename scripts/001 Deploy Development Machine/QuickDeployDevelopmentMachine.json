@@ -53,7 +53,8 @@
         "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
         "firstFileName": "[variables('firstFileNameBreakString')[0]]",
         "ecommerceAppName" : "[concat(parameters('Team Identifier'), 'ContosoSports')]", 
-        "hostingPlanName" : "[concat(parameters('Team Identifier'), 'ContosoSportsAppPlan')]"     
+        "hostingPlanName" : "[concat(parameters('Team Identifier'), 'ContosoSportsAppPlan')]",
+        "hostingEnvironment" :""     
 
     },
     "resources": [
@@ -253,7 +254,53 @@
                     "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File GetContosoSample.ps1"
                             }
                 }
-         }
+         },
+          {
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "Tier": "Standard",
+                "Name": "S1"
+            },
+            "name": "[variables('hostingPlanName')]",
+            "apiVersion": "2016-03-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "name": "[variables('hostingPlanName')]",
+                "workerSizeId": "0",
+                "reserved": false,
+                "hostingEnvironment": "[variables('hostingEnvironment')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "name": "[variables('ecommerceAppName')]",
+            "apiVersion": "2016-03-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "[concat('hidden-related:', '/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]": "empty"
+            },
+            "properties": {
+                "siteConfig": {
+                    "connectionStrings": [
+                        {
+                            "name": "defaultConnection",
+                              "ConnectionString": "[concat('Data Source=tcp:' , reference([concat('Microsoft.SQL/servers/', variables('ecommerceAppName'),']).fullyQualifiedDomainName , ',1433;Initial Catalog=ContosoSportsDB;User Id=demouser@',reference('Microsoft.SQL/servers/rbscontososports').fullyQualifiedDomainName,';Password=',variables('adminPassword'),';')]",
+                           
+                            "type": "SQLAzure"
+                        }
+                    ]
+                },
+                "name": "[variables('ecommerceAppName')]",
+                "serverFarmId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
+                "hostingEnvironment": "[variables('hostingEnvironment')]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+            ]
+        }
+        
+        
+        
      ],
     "outputs": {
         "adminUsername": {
