@@ -52,7 +52,7 @@
         "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
         "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
         "firstFileName": "[variables('firstFileNameBreakString')[0]]",
-        "ecommerceAppName" : "[concat(parameters('Team Identifier'), 'ContosoSports')]", 
+        "ecommerceAppName" : "[concat(parameters('Team Identifier'), 'contososports')]", 
         "hostingPlanName" : "[concat(parameters('Team Identifier'), 'ContosoSportsAppPlan')]",
         "hostingEnvironment" :"",
         "databaseName" : "ContosoSportsDB"     
