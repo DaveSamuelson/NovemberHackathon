@@ -13,7 +13,7 @@
         },
         "Team Identifier": {
             "type": "String",
-            "defaultValue": "rbsTeam",
+            "defaultValue": "rbsteam",
             "maxLength": 8,
              "metadata": {
                     "description": "Input an identifier (lower case only) for your team to be used when naminbg Azure Resources"
