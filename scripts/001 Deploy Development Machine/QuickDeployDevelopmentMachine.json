@@ -22,7 +22,6 @@
     },
     "variables": {
         "virtualMachineName":  "[concat(parameters('Team Identifier'), 'RBSDevVM')]",
-        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
         "metricsresourceid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/', 'Microsoft.Compute/virtualMachines/', variables('virtualMachineName'))]",
         "metricsclosing": "[concat('<Metrics resourceId=\"', variables('metricsresourceid'), '\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]",
         "metricsstart": "<WadCfg><DiagnosticMonitorConfiguration xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\" overallQuotaInMB=\"4096\"><DiagnosticInfrastructureLogs scheduledTransferPeriod=\"PT1M\" scheduledTransferLogLevelFilter=\"Warning\"/><WindowsEventLog scheduledTransferPeriod=\"PT1M\"><DataSource name=\"Security!*[System[(Level = 1) or (Level = 2)]]\"/><DataSource name=\"Application!*[System[(Level = 1) or (Level = 2)]]\"/><DataSource name=\"Windows Azure!*[System[(Level = 1) or (Level = 2)]]\"/><DataSource name=\"System!*[System[(Level = 1) or (Level = 2)]]\"/><DataSource name=\"System!*[System[Provider[@Name='Microsoft Antimalware']]]\"/></WindowsEventLog>",
@@ -44,6 +43,7 @@
         "addressPrefix": "10.7.1.0/24",
         "subnetName": "default",
         "subnetPrefix": "10.7.1.0/24",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', variables('subnetName'))]",
         "publicIpAddressName": "[concat(variables('virtualMachineName'),'-PIP')]",
         "publicIpAddressType": "Static",
         "fileUris": "https://davesextensions.blob.core.windows.net/vmextensions/GetContosoSample.ps1",
@@ -136,7 +136,7 @@
         
         {
             "type": "Microsoft.Compute/virtualMachines/extensions",
-            "name": "[concat(parameters('vmName'),'/CustomScriptExtension')]",
+            "name": "[concat(parameters('virtualMachineName'),'/CustomScriptExtension')]",
             "apiVersion": "2015-06-15",
             "location": "[parameters('location')]",
             "properties": {
