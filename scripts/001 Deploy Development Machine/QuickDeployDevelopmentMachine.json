@@ -251,9 +251,9 @@
                 }
             },
             "dependsOn": [
-                "[concat(variables('virtualMachineName'),'/', variables('diagnosticsExtensionName'))]"
+                "[concat('Microsoft.Compute/virtualMachines/',variables('virtualMachineName'),'/extensions/', variables('diagnosticsExtensionName'))]"
             ]
-        },
+        }
      ],
     "outputs": {
         "adminUsername": {
