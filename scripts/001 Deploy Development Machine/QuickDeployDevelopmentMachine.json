@@ -54,7 +54,8 @@
         "firstFileName": "[variables('firstFileNameBreakString')[0]]",
         "ecommerceAppName" : "[concat(parameters('Team Identifier'), 'ContosoSports')]", 
         "hostingPlanName" : "[concat(parameters('Team Identifier'), 'ContosoSportsAppPlan')]",
-        "hostingEnvironment" :""     
+        "hostingEnvironment" :"",
+        "databaseName" : "ContosoSportsDB"     
 
     },
     "resources": [
@@ -297,8 +298,64 @@
             "dependsOn": [
                 "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
             ]
+        },
+        {
+            "type": "microsoft.insights/components",
+            "name": "[variables('ecommerceAppName')]",
+            "apiVersion": "2014-04-01",
+            "location": "[parameters('location')]",
+            "tags": {
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/',variables('ecommerceAppName'))]": "Resource"
+            },
+            "properties": {
+                "ApplicationId": "[variables('ecommerceAppName')]",
+                "Request_Source": "IbizaWebAppExtensionCreate"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/sites/', variables('ecommerceAppName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Sql/servers",
+            "name": "[variables('ecommerceAppName')]",
+            "apiVersion": "2014-04-01-preview",
+            "location": "[parameters('location')]",
+            "properties": {
+                "administratorLogin": "[variables('adminUsername')]",
+                "administratorLoginPassword": "[variables('adminPassword')]",
+                "version": "12.0"
+            },
+            "resources": [
+                {
+                    "type": "databases",
+                    "name": "[parameters('databaseName')]",
+                    "apiVersion": "2014-04-01-preview",
+                    "location": "[parameters('location')]",
+                    "properties": {
+                        "edition": "Standard",
+                        "collation": "SQL_Latin1_General_CP1_CI_AS",
+                        "maxSizeBytes": "268435456000",
+                        "requestedServiceObjectiveId": "f1173c43-91bd-4aaa-973c-54e79e15235b"
+                    },
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/', variables('ecommerceAppName'))]"
+                    ]
+                },
+                {
+                    "type": "firewallrules",
+                    "name": "AllowAllWindowsAzureIps",
+                    "apiVersion": "2014-04-01-preview",
+                    "location": "[parameters('location')]",
+                    "properties": {
+                        "endIpAddress": "0.0.0.0",
+                        "startIpAddress": "0.0.0.0"
+                    },
+                    "dependsOn": [
+                        "[concat('Microsoft.Sql/servers/', variables('ecommerceAppName'))]"
+                    ]
+                }
+            ]
         }
-        
         
         
      ],
