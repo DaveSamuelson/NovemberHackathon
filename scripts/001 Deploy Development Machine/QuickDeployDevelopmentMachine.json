@@ -51,7 +51,9 @@
         "UriFileNamePieces": "[split(variables('fileUris'), '/')]",
         "firstFileNameString": "[variables('UriFileNamePieces')[sub(length(variables('UriFileNamePieces')), 1)]]",
         "firstFileNameBreakString": "[split(variables('firstFileNameString'), '?')]",
-        "firstFileName": "[variables('firstFileNameBreakString')[0]]"      
+        "firstFileName": "[variables('firstFileNameBreakString')[0]]",
+        "ecommerceAppName" : "[concat(parameters('Team Identifier'), 'ContosoSports')]", 
+        "hostingPlanName" : "[concat(parameters('Team Identifier'), 'ContosoSportsAppPlan')]"     
 
     },
     "resources": [
@@ -247,12 +249,11 @@
                 "typeHandlerVersion": "1.7",
                 "autoUpgradeMinorVersion": true,
                 "settings": {
-                    "fileUris": "[split(variables('fileUris'), ' ')]"
-                },
-                "commandToExecute": "[concat ('powershell -ExecutionPolicy Unrestricted -File ', variables('firstFileName'), ' ', variables('arguments'))]"
-            }
-           
-        }
+                    "fileUris": ["http://davesextensions.blob.core.windows.net/vmextensions/GetContosoSample.ps1"],
+                    "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File GetContosoSample.ps1"
+                            }
+                }
+         }
      ],
     "outputs": {
         "adminUsername": {
