@@ -22,7 +22,6 @@
     },
     "variables": {
         "virtualMachineName":  "[concat(parameters('Team Identifier'), 'RBSDevVM')]",
-        "vnetId": "[resourceId('rbsTechStockManualSetUp','Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
         "metricsresourceid": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/', 'Microsoft.Compute/virtualMachines/', variables('virtualMachineName'))]",
         "metricsclosing": "[concat('<Metrics resourceId=\"', variables('metricsresourceid'), '\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]",
@@ -35,6 +34,7 @@
         "adminPassword": "demo@pass1", 
         "storageAccountName": "[concat(parameters('Team Identifier'), 'RBSDisks')]",
         "virtualNetworkName": "[concat(parameters('Team Identifier'), 'RBSVNet')]",
+        "vnetId": "[resourceId('rbsTechStockManualSetUp','Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
         "networkInterfaceName": "[concat(variables('virtualMachineName'),'-NIC')]",
         "networkSecurityGroupName": "[concat(variables('virtualMachineName'),'-NSG')]",
         "storageAccountType": "Standard_LRS",
