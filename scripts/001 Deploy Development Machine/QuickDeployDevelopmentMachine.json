@@ -38,7 +38,7 @@
         "networkSecurityGroupName": "[concat(variables('virtualMachineName'),'-NSG')]",
         "storageAccountType": "Standard_LRS",
         "diagnosticsStorageAccountName": "[concat(parameters('Team Identifier'), 'RBSDiagnostics')]",
-        "diagnosticsStorageAccountId": "[concat('Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName')]",
+        "diagnosticsStorageAccountId": "[concat('Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
         "diagnosticsStorageAccountType": "[variables(storageAccountType)]",
         "addressPrefix": "10.7.1.0/24",
         "subnetName": "default",
