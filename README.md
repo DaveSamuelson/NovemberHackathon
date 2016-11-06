@@ -28,7 +28,7 @@ Using your specified Team Identifer, the following resources are deployed:
 </a>
 
 <h2>Visualise the Template</h2>
-<a href="http://armviz.io/#/?load=https://github.com/DaveSamuelson/NovemberHackathon/tree/master/scripts/001%20Deploy%20Development%20Machine" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fdavesamuelson%2FNovemberHackathon%2Fmaster%2Fscripts%2F001%20Deploy%20Development%20Machine%2FQuickDeployDevelopmentMachine.json" target="_blank">
 
   <img src="http://armviz.io/visualizebutton.png"/>
 </a>
