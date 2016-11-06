@@ -361,22 +361,11 @@
         },
         {
             "type": "Microsoft.ClassicStorage/storageAccounts",
-            "sku": {
-                "name": "[variables('storageAccountType')]"
-            },
-            "kind": "Storage",
             "name": "[variables('additionalStorageAccName')]",
-            "apiVersion": "2016-01-01",
+            "apiVersion": "2015-06-01",
             "location": "[parameters('location')]",
             "properties": {
-                "encryption": {
-                    "services": {
-                        "blob": {
-                            "enabled": "false"
-                        }
-                    },
-                    "keySource": "Microsoft.ClassicStorage"
-                }
+                "accountType": "[variables('storageAccountType')]"
             }
         },
         {
