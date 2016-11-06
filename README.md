@@ -9,9 +9,9 @@ Before you can initiate the deployment of resources within this script, you will
 * An identifier for your team that is no more than 6 chars long, lowercase and does not contain any symbols or numbers.
 
 <h2>What does this script deploy?</h2>
-Using your specified Team Identifer, the following resources are deployed:
+Using your specified Team Identifer (TeamID), the following resources are deployed:
 
-* <Team Identifier>DevVM - An Azure Virtual Machine running Windows Server 2012 R2 with Visual Studio Community 2015 (Update 3)installed
+* TeamIDDevVM - An Azure Virtual Machine running Windows Server 2012 R2 with Visual Studio Community 2015 (Update 3) installed
 
 
 # November Hackathon
