@@ -33,7 +33,8 @@ Using your specified Team Identifer, the following resources are deployed:
 
 
 
-**If your template does not Visualise, this usually indicates invalid JSON - try validating in http://jsonlint.com/**
+<h3>NOTE</h3>
+If you are creating templates that fail to Visualise, this usually indicates invalid JSON - try validating in http://jsonlint.com/
 
 
 
