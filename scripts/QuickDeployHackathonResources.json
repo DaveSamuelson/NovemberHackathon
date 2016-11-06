@@ -381,7 +381,10 @@
                 "name": "[variables('adminAppName')]",
                 "serverFarmId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
                 "hostingEnvironment": "[variables('hostingEnvironment')]"
-            }
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+            ]
         },
         {
             "type": "microsoft.insights/components",
@@ -412,7 +415,10 @@
                 "name": "[variables('paymentsAPIAppName')]",
                 "serverFarmId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
                 "hostingEnvironment": "[variables('hostingEnvironment')]"
-            }
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+            ]
         },
         {
             "type": "microsoft.insights/components",
@@ -445,6 +451,9 @@
                 "hostingEnvironment": "[variables('hostingEnvironment')]"
                 
             },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', variables('hostingPlanName'))]"
+            ],
             "resources": [
                 {
                     "name": "web",
