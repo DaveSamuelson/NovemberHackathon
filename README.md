@@ -1,4 +1,4 @@
-# NovemberHackathon
+ # November Hackathon
 Scripts to help set-up November Hackathon
 
 
