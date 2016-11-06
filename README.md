@@ -1,9 +1,16 @@
 <h1>November Hackathon</h1>
 
-The purpose of this QuickStart template is to provision the vast majority of Azure resources, within your own Azure subscription to demonstrate core capabilities for use in the Hackathon.
+The purpose of this QuickStart template is to provision Azure resources within your own subscription, demonstrating core Azure capabilities that you are likely to adopy during the course of the Hackathon.
 
+<h2>Pre-Requisites</h2>
+Before you can initiate the deployment of resources within this script, you will need:
 
+* An Azure Susbcription
+* An identifier for your team that is no more than 6 chars long, lowercase and does not contain any symbols or numbers.
 
+<h2>What does this script deploy?</h2>
+
+these resources, you will need
 
 
 # November Hackathon
