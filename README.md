@@ -7,6 +7,8 @@ Before you can initiate the deployment of resources within this script, you  nee
 
 * An Azure Susbcription
 * An identifier for your team that is no more than 6 chars long, lowercase and does not contain any symbols or numbers.
+* Username: demouser
+* Password: demo@pass1
 
 <h2>What does this script deploy?</h2>
 Using your specified Team Identifer, the following resources are deployed:
