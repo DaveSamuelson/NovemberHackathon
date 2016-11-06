@@ -360,7 +360,7 @@
             ]
         },
         {
-            "type": "Microsoft.Storage/storageAccounts",
+            "type": "Microsoft.ClassicStorage/storageAccounts",
             "sku": {
                 "name": "[variables('storageAccountType')]"
             },
@@ -375,7 +375,7 @@
                             "enabled": "false"
                         }
                     },
-                    "keySource": "Microsoft.Storage"
+                    "keySource": "Microsoft.ClassicStorage"
                 }
             }
         },
