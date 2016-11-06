@@ -363,7 +363,7 @@
         {
             "type": "Microsoft.ClassicStorage/storageAccounts",
             "name": "[variables('additionalStorageAccName')]",
-            "apiVersion": "2015-06-01",
+            "apiVersion": "2016-04-01",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "[variables('storageAccountType')]"
