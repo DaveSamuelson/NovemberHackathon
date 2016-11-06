@@ -9,9 +9,12 @@ Scripts to help set-up November Hackathon
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-<a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/davesamuelson/NovemberHackathon/master/Microsoft.Sitecore/Microsoft.Sitecore.ResourceGroupDeployments/Templates/SitecoreIaaS.json" target="_blank">
+<a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/davesamuelson/NovemberHackathon/master/scripts/Deploy%20Development%20Machione%20QuickDeployDevelopmentMachine.json" target="_blank">
   <img src="http://armviz.io/visualizebutton.png"/>
 </a>
+
+https://github.com/DaveSamuelson/NovemberHackathon/blob/master/scripts/001%20Deploy%20Development%20Machine/QuickDeployDevelopmentMachine.json
+
 
 **If your template does not Visualise, this usually indicates invalid JSON - try validating in http://jsonlint.com/**
 
