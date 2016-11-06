@@ -466,7 +466,7 @@
                         }
                     },
                     "dependsOn": [
-                        "[concat('Microsoft.Web/Sites', variables('offersAPIAppName'))]"
+                        "[concat('Microsoft.Web/Sites/', variables('offersAPIAppName'))]"
                     ]
                 }
             ]
