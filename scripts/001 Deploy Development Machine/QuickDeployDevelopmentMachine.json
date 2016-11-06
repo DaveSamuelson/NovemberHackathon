@@ -59,7 +59,9 @@
         "databaseName" : "ContosoSportsDB",
         "additionalStorageAccName": "[concat(parameters('Team Identifier'), 'rbsstorage')]",
         "paymentsAPIAppName" : "[concat(variables('ecommerceAppName'), 'PaymentsAPI')]",   
-        "offersAPIAppName" : "[concat(variables('ecommerceAppName'), 'OffersAPI')]"   
+        "offersAPIAppName" : "[concat(variables('ecommerceAppName'), 'OffersAPI')]",
+        "sqlConnection": "[concat('Microsoft.SQL/servers/', variables('ecommerceAppName'))]"
+
     },
     "resources": [
         {
@@ -288,7 +290,7 @@
                     "connectionStrings": [
                         {
                             "name": "defaultConnection",
-                              "ConnectionString": "[concat('Data Source=tcp:' , reference('Microsoft.SQL/servers/rsTeamContosoSports').fullyQualifiedDomainName,',1433;Initial Catalog=ContosoSportsDB;User Id=demouser@',reference('Microsoft.SQL/servers/rsTeamContosoSports').fullyQualifiedDomainName,';Password=',variables('adminPassword'),';')]",
+                              "ConnectionString": "[concat('Data Source=tcp:' , reference(variables('sqlConnection')).fullyQualifiedDomainName,'1433;Initial Catalog=',variables('databaseName'),';User Id=',variables('adminuserName'),'@',reference(variables('sqlConnection')).fullyQualifiedDomainName,';Password=',variables('adminPassword'),';')]",
                            
                             "type": "SQLAzure"
                         }
