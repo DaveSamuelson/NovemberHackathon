@@ -12,7 +12,8 @@ Before you can initiate the deployment of resources within this script, you will
 Using your specified Team Identifer, the following resources are deployed:
 
 * DevVM - An Azure Virtual Machine running Windows Server 2012 R2 with Visual Studio Community 2015 (Update 3) installed
-        - A sample project will be copied down from Azure BLOB Storage and expanded as C:\Hackathon 
+* A sample project will be copied down from Azure BLOB Storage and expanded as C:\Hackathon on the DevVM
+
 
 
 # November Hackathon
