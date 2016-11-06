@@ -6,7 +6,7 @@
             "type": "String",
             "defaultValue": "North Europe",
             "allowedValues": [
-                "North Europe", "West Europe","Central US" ],
+                "North Europe", "West Europe","South Central US" ],
                 "metadata": {
                     "description": "Select the location for your Azure Resources"
                 }           
