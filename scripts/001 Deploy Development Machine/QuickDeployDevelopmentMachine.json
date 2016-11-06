@@ -452,11 +452,24 @@
             "properties": {
                 "name": "[variables('offersAPIAppName')]",
                 "serverFarmId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
-                "hostingEnvironment": "[variables('hostingEnvironment')]",
-                "cors" : {
-                    "allowedOrigins" : ["*"]
+                "hostingEnvironment": "[variables('hostingEnvironment')]"
+                
+            },
+            "resources": [
+                {
+                    "name": "web",
+                    "type": "config",
+                    "apiVersion": "2014-04-01-preview",
+                    "properties": {
+                        "cors": {
+                            "allowedOrigins":["*"]
+                        }
+                    },
+                    "dependsOn": [
+                        "[concat('Microsoft.Web/Sites', variables('offersAPIAppName'))]"
+                    ]
                 }
-            }
+            ]
         },
         {
             "type": "microsoft.insights/components",
