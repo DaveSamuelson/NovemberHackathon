@@ -1,4 +1,12 @@
- # November Hackathon
+<h1>November Hackathon</h1>
+
+The purpose of this QuickStart template is to provision the vast majority of Azure resources, within your own Azure subscription to demonstrate core capabilities for use in the Hackathon.
+
+
+
+
+
+# November Hackathon
 Scripts to help set-up November Hackathon
 
 
