@@ -452,7 +452,10 @@
             "properties": {
                 "name": "[variables('offersAPIAppName')]",
                 "serverFarmId": "[concat('/subscriptions/', subscription().subscriptionId,'/resourcegroups/', resourceGroup().name, '/providers/Microsoft.Web/serverfarms/', variables('hostingPlanName'))]",
-                "hostingEnvironment": "[variables('hostingEnvironment')]"
+                "hostingEnvironment": "[variables('hostingEnvironment')]",
+                "cors" : {
+                    "allowedOrigins" : ["*"]
+                }
             }
         },
         {
