@@ -1,3 +1,4 @@
+
 <h1>November Hackathon</h1>
 
 The purpose of this QuickStart template is to provision Azure resources within your own subscription, demonstrating core Azure capabilities that you are likely to adopy during the course of the Hackathon.
@@ -27,7 +28,8 @@ Using your specified Team Identifer, the following resources are deployed:
 </a>
 
 <h2>Visualise the Template</h2>
-<a href="http://armviz.io/#/?load=https://raw.githubusercontent.com/davesamuelson/NovemberHackathon/master/scripts/Deploy%20Development%20Machione%20QuickDeployDevelopmentMachine.json" target="_blank">
+<a href="http://armviz.io/#/?load=https://github.com/DaveSamuelson/NovemberHackathon/tree/master/scripts/001%20Deploy%20Development%20Machine" target="_blank">
+
   <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
